@@ -21,3 +21,12 @@ npm run watch-poll
 
 // 字体图标
 yarn add @fortawesome/fontawesome-free
+
+
+php artisan make:auth
+
+// 中文语音包
+composer require "overtrue/laravel-lang:~3.0"
+
+// 扩展语音包
+php artisan lang:publish zh-CN
