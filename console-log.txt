@@ -10,3 +10,11 @@ git push -u origin master
 
 
 composer dump-autoload
+
+
+php artisan make:controller PagesController
+
+yarn config set registry https://registry.npm.taobao.org
+yarn install
+
+npm run watch-poll
