@@ -1,0 +1,12 @@
+git init
+
+git remote add origin https://github.com/bai615/laravel-bbs.git
+
+git add -A
+
+git commit -m 'project init'
+
+git push -u origin master
+
+
+composer dump-autoload
