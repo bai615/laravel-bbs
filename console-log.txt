@@ -30,3 +30,6 @@ composer require "overtrue/laravel-lang:~3.0"
 
 // 扩展语音包
 php artisan lang:publish zh-CN
+
+// 数据迁移
+php artisan migrate
