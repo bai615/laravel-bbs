@@ -41,3 +41,5 @@ php artisan vendor:publish --provider='Mews\Captcha\CaptchaServiceProvider'
 
 php artisan make:middleware EnsureEmailIsVerified
 
+php artisan event:generate
+
