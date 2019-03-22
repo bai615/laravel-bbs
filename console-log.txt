@@ -38,3 +38,6 @@ php artisan migrate
 composer require "mews/captcha:~2.0"
 php artisan vendor:publish --provider='Mews\Captcha\CaptchaServiceProvider'
 
+
+php artisan make:middleware EnsureEmailIsVerified
+
