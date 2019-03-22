@@ -43,3 +43,4 @@ php artisan make:middleware EnsureEmailIsVerified
 
 php artisan event:generate
 
+php artisan make:controller UsersController
