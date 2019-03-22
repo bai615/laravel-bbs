@@ -44,3 +44,9 @@ php artisan make:middleware EnsureEmailIsVerified
 php artisan event:generate
 
 php artisan make:controller UsersController
+
+php artisan make:migration add_avatar_and_introduction_to_users_table --table=users
+
+php artisan migrate
+
+php artisan make:request UserRequest
