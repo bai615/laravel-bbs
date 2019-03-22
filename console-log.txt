@@ -33,3 +33,8 @@ php artisan lang:publish zh-CN
 
 // 数据迁移
 php artisan migrate
+
+// 验证码
+composer require "mews/captcha:~2.0"
+php artisan vendor:publish --provider='Mews\Captcha\CaptchaServiceProvider'
+
