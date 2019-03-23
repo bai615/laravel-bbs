@@ -64,3 +64,12 @@ php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServic
 
 
 php artisan make:policy UserPolicy
+
+
+php artisan make:model Models/Category -m
+
+php artisan migrate
+
+php artisan make:migration seed_categories_data
+
+php artisan migrate
