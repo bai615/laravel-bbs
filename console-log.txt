@@ -50,3 +50,14 @@ php artisan make:migration add_avatar_and_introduction_to_users_table --table=us
 php artisan migrate
 
 php artisan make:request UserRequest
+
+
+composer require intervention/image
+php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravel5"
+
+
+// Laraval IDE 自动补全助手：Laravel IDE Helper Generator
+// https://laravelacademy.org/post/4202.html
+composer require barryvdh/laravel-ide-helper
+php artisan ide-helper:generate
+php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config

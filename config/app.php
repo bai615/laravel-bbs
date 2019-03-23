@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Overtrue\LaravelLang\TranslationServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*
