@@ -105,3 +105,7 @@ php artisan migrate:refresh --seed
 composer require "barryvdh/laravel-debugbar:~3.2" --dev
 
 php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+
+php artisan make:controller CategoriesController
+
+composer require "hieu-le/active:~3.5"
