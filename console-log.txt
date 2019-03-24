@@ -109,3 +109,7 @@ php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
 php artisan make:controller CategoriesController
 
 composer require "hieu-le/active:~3.5"
+
+
+mkdir -p resources/editor/css
+mkdir -p resources/editor/js
