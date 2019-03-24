@@ -118,3 +118,6 @@ mkdir -p resources/editor/js
 // 安装 HTMLPurifier for Laravel 5，解决 XSS 攻击
 composer require "mews/purifier:~2.0"
 php artisan vendor:publish --provider="Mews\Purifier\PurifierServiceProvider"
+
+
+composer require "overtrue/pinyin:~3.0"
