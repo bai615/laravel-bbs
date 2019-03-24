@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.28 on 2019-03-23 21:01:38.
+ * Generated for Laravel 5.7.28 on 2019-03-24 20:25:09.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15319,6 +15319,45 @@ namespace Mews\Captcha\Facades {
  
 }
 
+namespace Mews\Purifier\Facades { 
+
+    /**
+     * 
+     *
+     * @see \Mews\Purifier
+     */ 
+    class Purifier {
+        
+        /**
+         * 
+         *
+         * @param $dirty
+         * @param null $config
+         * @return mixed 
+         * @static 
+         */ 
+        public static function clean($dirty, $config = null)
+        {
+                        /** @var \Mews\Purifier\Purifier $instance */
+                        return $instance->clean($dirty, $config);
+        }
+        
+        /**
+         * Get HTMLPurifier instance.
+         *
+         * @return \HTMLPurifier 
+         * @static 
+         */ 
+        public static function getInstance()
+        {
+                        /** @var \Mews\Purifier\Purifier $instance */
+                        return $instance->getInstance();
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -17934,6 +17973,8 @@ namespace  {
     class Image extends \Intervention\Image\Facades\Image {}
 
     class Captcha extends \Mews\Captcha\Facades\Captcha {}
+
+    class Purifier extends \Mews\Purifier\Facades\Purifier {}
  
 }
 
