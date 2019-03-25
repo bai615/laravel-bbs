@@ -121,3 +121,18 @@ php artisan vendor:publish --provider="Mews\Purifier\PurifierServiceProvider"
 
 
 composer require "overtrue/pinyin:~3.0"
+
+composer require "predis/predis:~1.1"
+
+php artisan queue:failed-table
+
+php artisan make:job TranslateSlug
+
+php artisan queue:listen
+
+// 队列监控 Horizon
+composer require "laravel/horizon:~1.3"
+
+php artisan vendor:publish --provider="Laravel\Horizon\HorizonServiceProvider"
+
+php artisan horizon

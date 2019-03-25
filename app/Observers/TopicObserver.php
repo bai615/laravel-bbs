@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Handlers\SlugTranslateHandler;
+use App\Jobs\TranslateSlug;
 use App\Models\Topic;
 
 // creating, created, updating, updated, saving,
@@ -29,8 +30,22 @@ class TopicObserver
         $topic->excerpt = make_excerpt($topic->body);
 
         // 如 slug 字段无内容，即使用翻译器对 title 进行翻译
+//        if (!$topic->slug){
+            // 同步调用翻译接口
+//            $topic->slug = app(SlugTranslateHandler::class)->translate($topic->title);
+
+            // 推送任务队列，此时还未存储到数据库，所有ID为null
+//            dispatch(new TranslateSlug($topic));
+//        }
+    }
+
+    public function saved(Topic $topic)
+    {
+        // 如 slug 字段无内容，即使用翻译器对 title 进行翻译
         if (!$topic->slug){
-            $topic->slug = app(SlugTranslateHandler::class)->translate($topic->title);
+
+        // 推送任务队列，此时还未存储到数据库，所有ID为null
+            dispatch(new TranslateSlug($topic));
         }
     }
 }
