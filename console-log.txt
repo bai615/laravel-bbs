@@ -152,3 +152,5 @@ php artisan make:migration add_notification_count_to_users_table --table=users
 php artisan migrate
 
 php artisan make:notification TopicReplied
+
+php artisan make:controller NotificationsController
