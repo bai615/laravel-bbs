@@ -184,3 +184,13 @@ php artisan vendor:publish --provider="Frozennode\Administrator\AdministratorSer
 mkdir -p config/administrator/settings
 touch config/administrator/settings/.gitkeep
 /////////////////////////////////////////////////////////////////////////////////////////////
+新建 Artisan 命令
+php artisan make:command CalculateActiveUser --command=laravelbbs:calculate-active-user
+
+laravelbbs:calculate-active-user
+
+export EDITOR=vi && crontab -e
+
+* * * * * php /home/vagrant/code/laravel-bbs/artisan schedule:run >> /dev/null 2>&1
+
+php artisan cache:clear
