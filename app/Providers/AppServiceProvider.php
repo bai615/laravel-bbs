@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
 		\App\Models\User::observe(\App\Observers\UserObserver::class);
 		\App\Models\Reply::observe(\App\Observers\ReplyObserver::class);
 		\App\Models\Topic::observe(\App\Observers\TopicObserver::class);
+		\App\Models\Link::observe(\App\Observers\LinkOberver::class);
 
         // 时间本地化设置（中文）
         Carbon::setLocale('zh');

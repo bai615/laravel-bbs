@@ -194,3 +194,14 @@ export EDITOR=vi && crontab -e
 * * * * * php /home/vagrant/code/laravel-bbs/artisan schedule:run >> /dev/null 2>&1
 
 php artisan cache:clear
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+php artisan make:model Models/Link -m
+
+php artisan migrate
+
+php artisan make:factory LinkFactory
+
+php artisan make:seeder LinksTableSeeder
+
+php artisan migrate:refresh --seed
