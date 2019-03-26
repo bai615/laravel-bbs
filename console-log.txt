@@ -154,3 +154,19 @@ php artisan migrate
 php artisan make:notification TopicReplied
 
 php artisan make:controller NotificationsController
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// 权限管理
+composer require "spatie/laravel-permission:~2.29"
+// 生成数据库迁移文件
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
+// 进行数据迁移
+php artisan migrate
+// 生成配置信息
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="config"
+// 使用数据迁移来实现初始化角色
+php artisan make:migration seed_roles_and_permissions_data
+// 刷新数据库测试数据
+php artisan migrate:refresh --seed
+/////////////////////////////////////////////////////////////////////////////////////////////
