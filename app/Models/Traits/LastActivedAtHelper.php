@@ -14,17 +14,11 @@ trait LastActivedAtHelper
 
     public function recordLastActivedAt()
     {
-        // 获取今天的日期
-        $date = Carbon::now()->toDateString();
-
         // Redis 哈希表的命名，如：laravelbbs_last_actived_at_2017-10-21
-        $hash = $this->hash_prefix . $date;
+        $hash = $this->getHashFromDateString(Carbon::now()->toDateString());
 
         // 字段名称，如：user_1
-        $field = $this->field_prefix . $this->id;
-
-        // 测试信息输出
-//        dd(Redis::hGetAll($hash));
+        $field = $this->getHashField();
 
         // 当前时间，如：2017-10-21 08:35:15
         $now = Carbon::now()->toDateTimeString();
@@ -35,11 +29,8 @@ trait LastActivedAtHelper
 
     public function syncUserActivedAt()
     {
-        // 获取昨天的日期，格式如：2017-10-21
-        $yesterday_date = Carbon::yesterday()->toDateString();
-
         // Redis 哈希表的命名，如：laravebbs_last_actived_at-2017-10-21
-        $hash = $this->hash_prefix . $yesterday_date;
+        $hash = $this->getHashFromDateString(Carbon::yesterday()->toDateString());
 
         // 从 Redis 中获取所有哈希表里的数据
         $dates = Redis::hGetAll($hash);
@@ -62,14 +53,11 @@ trait LastActivedAtHelper
 
     public function getLastActivedAtAttribute($value)
     {
-        // 获取今天的日期
-        $date = Carbon::now()->toDateString();
-
         // Redis 哈希表的命名，如：laravelbbs_last_actived_at-2017-10-21
-        $hash = $this->hash_prefix . $date;
+        $hash = $this->getHashFromDateString(Carbon::now()->toDateString());
 
         // 字段名称，如：user_1
-        $field = $this->field_prefix . $this->id;
+        $field = $this->getHashField();
 
         // 三元运算符，优先选择 Redis 的数据，否则使用数据库中
         $datetime = Redis::hGet($hash, $field) ? : $value;
@@ -83,4 +71,15 @@ trait LastActivedAtHelper
         }
     }
 
+    public function getHashFromDateString($date)
+    {
+        // Redis 哈希表的命名，如：laravelbbs_last_actived_at-2017-10-21
+        return $this->hash_prefix . $date;
+    }
+
+    public function getHashField()
+    {
+        // 字段名称，如：user_1
+        return $this->field_prefix . $this->id;
+    }
 }
