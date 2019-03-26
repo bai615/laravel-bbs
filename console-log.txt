@@ -176,3 +176,11 @@ composer require "viacreative/sudo-su:~1.1"
 php artisan vendor:publish --provider="VIACreative\SudoSu\ServiceProvider"
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+// 后台管理
+composer require "summerblue/administrator:~1.1"
+// 发布资源文件
+php artisan vendor:publish --provider="Frozennode\Administrator\AdministratorServiceProvider"
+// 创建必要的文件夹
+mkdir -p config/administrator/settings
+touch config/administrator/settings/.gitkeep
+/////////////////////////////////////////////////////////////////////////////////////////////
