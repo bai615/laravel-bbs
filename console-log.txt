@@ -227,3 +227,9 @@ API start
 composer require dingo/api
 
 php artisan vendor:publish  --provider="Dingo\Api\Provider\LaravelServiceProvider"
+
+composer require "overtrue/easy-sms"
+
+touch config/easysms.php
+
+php artisan make:provider EasySmsServiceProvider

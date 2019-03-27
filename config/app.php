@@ -177,6 +177,8 @@ return [
 
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+        App\Providers\EasySmsServiceProvider::class,
     ],
 
     /*
