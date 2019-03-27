@@ -233,3 +233,8 @@ composer require "overtrue/easy-sms"
 touch config/easysms.php
 
 php artisan make:provider EasySmsServiceProvider
+
+
+composer require flc/dysms
+touch config/sms.php
+php artisan make:controller SmsController
