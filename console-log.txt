@@ -218,3 +218,12 @@ php artisan make:middleware RecordLastActivedTime
 php artisan make:migration add_last_actived_at_to_users_table --table=users
 
 php artisan make:command SyncUserActivedAt --command=laravelbbs:sync-user-actived-at
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+API start
+
+composer require dingo/api
+
+php artisan vendor:publish  --provider="Dingo\Api\Provider\LaravelServiceProvider"
