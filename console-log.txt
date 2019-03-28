@@ -256,3 +256,9 @@ php artisan make:request Api/VerificationCodeRequest
 
 php artisan make:controller Api/UsersController
 php artisan make:request Api/UserRequest
+
+// API 图片验证码
+composer require gregwar/captcha
+
+php artisan make:controller Api/CaptchasController
+php artisan make:request Api/CaptchaRequest
