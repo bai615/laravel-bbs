@@ -25,10 +25,17 @@ $api->version('v1', [
     $api->get('version', function () {
         return response('this is version v1');
     });
-    // 短信验证码
-    $api->post('verificationCodes', 'VerificationCodesController@store')
-        ->name('api.verificationCodes.store');
-    // 用户注册
-    $api->post('users', 'UsersController@store')
-        ->name('api.users.store');
+
+    $api->group([
+        'middleware' => 'api.throttle', // 调用频率限制，1分钟1次
+        'limit' => config('api.rate_limits.sign.limit'),
+        'expires' => config('api.rate_limits.sign.expires'),
+    ], function ($api){
+        // 短信验证码
+        $api->post('verificationCodes', 'VerificationCodesController@store')
+            ->name('api.verificationCodes.store');
+        // 用户注册
+        $api->post('users', 'UsersController@store')
+            ->name('api.users.store');
+    });
 });
