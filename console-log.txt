@@ -262,3 +262,7 @@ composer require gregwar/captcha
 
 php artisan make:controller Api/CaptchasController
 php artisan make:request Api/CaptchaRequest
+
+
+// 微信登录
+composer require socialiteproviders/weixin
