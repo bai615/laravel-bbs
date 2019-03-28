@@ -253,3 +253,6 @@ php artisan make:controller Api/Controller
 php artisan make:controller Api/VerificationCodesController
 
 php artisan make:request Api/VerificationCodeRequest
+
+php artisan make:controller Api/UsersController
+php artisan make:request Api/UserRequest
