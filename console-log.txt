@@ -266,3 +266,10 @@ php artisan make:request Api/CaptchaRequest
 
 // 微信登录
 composer require socialiteproviders/weixin
+
+php artisan make:migration add_weixin_openid_to_users_table --table=users
+
+php artisan migrate
+
+php artisan make:controller Api/AuthorizationsController
+php artisan make:request Api/SocialAuthorizationRequest
