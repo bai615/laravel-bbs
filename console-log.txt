@@ -273,3 +273,11 @@ php artisan migrate
 
 php artisan make:controller Api/AuthorizationsController
 php artisan make:request Api/SocialAuthorizationRequest
+
+// 安装 jwt-auth
+composer require tymon/jwt-auth:1.0.0-rc.3
+
+php artisan jwt:secret
+
+php artisan make:request Api/AuthorizationRequest
+
