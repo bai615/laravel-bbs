@@ -302,3 +302,7 @@ php artisan make:request Api/ImageRequest
 php artisan make:controller Api/ImagesController
 
 touch app/Transformers/ImageTransformer.php
+
+touch app/Transformers/CategoryTransformer.php
+
+php artisan make:controller Api/CategoriesController
