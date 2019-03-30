@@ -306,3 +306,9 @@ touch app/Transformers/ImageTransformer.php
 touch app/Transformers/CategoryTransformer.php
 
 php artisan make:controller Api/CategoriesController
+
+php artisan make:request Api/TopicRequest
+
+touch app/Transformers/TopicTransformer.php
+
+php artisan make:controller Api/TopicsController
