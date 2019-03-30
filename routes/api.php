@@ -20,14 +20,15 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
-    'namespace' => 'App\Http\Controllers\Api'
+    'namespace' => 'App\Http\Controllers\Api',
+    'middleware' => 'serializer:array'
 ], function ($api) {
     $api->get('version', function () {
         return response('this is version v1');
     });
 
     $api->group([
-        'middleware' => 'api.throttle', // 调用频率限制，1分钟1次
+        'middleware' => 'api.throttle', // 调用频率限制，1 分钟 1 次
         'limit' => config('api.rate_limits.sign.limit'),
         'expires' => config('api.rate_limits.sign.expires'),
     ], function ($api) {
@@ -52,5 +53,20 @@ $api->version('v1', [
         // 删除token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
+    });
+
+    $api->group([
+        'middleware' => 'api.throttle', // 调用频率限制，1 分钟 60 次
+        'limit' => config('api.rate_limits_access_limit'),
+        'expires' => config('api_rate_limits_access_expires'),
+    ], function ($api){
+        // 游客可以访问的接口
+
+        // 需要 token 验证的接口
+        $api->group(['middleware' => 'api.auth'], function ($api){
+            // 当前登录用户信息
+            $api->get('user', 'UsersController@me')
+                ->name('api.user.show');
+        });
     });
 });

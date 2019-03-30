@@ -284,3 +284,10 @@ php artisan make:request Api/AuthorizationRequest
 php artisan make:command GenerateToken
 
 php artisan laravelbbs:generate-token
+
+
+mkdir app/Transformers
+
+touch app/Transformers/UserTransformer.php
+
+composer require liyu/dingo-serializer-switch
