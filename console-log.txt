@@ -291,3 +291,14 @@ mkdir app/Transformers
 touch app/Transformers/UserTransformer.php
 
 composer require liyu/dingo-serializer-switch
+
+
+php artisan make:migration create_images_table --create=images
+
+php artisan migrate
+
+php artisan make:model Models/Image
+php artisan make:request Api/ImageRequest
+php artisan make:controller Api/ImagesController
+
+touch app/Transformers/ImageTransformer.php
