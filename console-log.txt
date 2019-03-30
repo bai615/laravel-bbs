@@ -318,3 +318,10 @@ composer require overtrue/laravel-query-logger --dev
 
 tail -f ./storage/logs/laravel.log
 
+php artisan make:request Api/ReplyRequest
+
+php artisan make:request Api/FormRequest
+
+touch app/Transformers/ReplyTransformer.php
+
+php artisan make:controller Api/RepliesController
