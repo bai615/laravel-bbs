@@ -21,7 +21,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
-    'middleware' => 'serializer:array'
+    'middleware' => ['serializer:array', 'bindings']
 ], function ($api) {
     $api->get('version', function () {
         return response('this is version v1');
@@ -57,8 +57,8 @@ $api->version('v1', [
 
     $api->group([
         'middleware' => 'api.throttle', // 调用频率限制，1 分钟 60 次
-        'limit' => config('api.rate_limits_access_limit'),
-        'expires' => config('api_rate_limits_access_expires'),
+        'limit' => config('api.rate_limits.access.limit'),
+        'expires' => config('api.rate_limits.access.expires'),
     ], function ($api){
         // 游客可以访问的接口
         $api->get('categories', 'CategoriesController@index')
@@ -78,6 +78,9 @@ $api->version('v1', [
             // 发布话题
             $api->post('topics', 'TopicsController@store')
                 ->name('api.topics.store');
+            // 编辑话题
+            $api->patch('topics/{topic}', 'TopicsController@update')
+                ->name('api.topics.update');
         });
     });
 });
