@@ -341,3 +341,18 @@ touch app/Transformers/LinkTransformer.php
 php artisan make:controller Api/LinksController
 
 php artisan make:middleware ChangeLocale
+
+
+
+php artisan make:migration add_registration_id_to_users_table --table=users
+
+php artisan migrate
+
+// 安装 Jpush SDK
+composer require jpush/jpush
+
+php artisan make:provider JpushServiceProvider
+
+touch config/jpush.php
+
+php artisan make:listener PushNotification
