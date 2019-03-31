@@ -329,3 +329,7 @@ php artisan make:controller Api/RepliesController
 touch app/Transformers/NotificationTransformer.php
 
 php artisan make:controller Api/NotificationsController
+
+touch app/Transformers/PermissionTransformer.php
+
+php artisan make:controller Api/PermissionsController
