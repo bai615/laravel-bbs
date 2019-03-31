@@ -325,3 +325,7 @@ php artisan make:request Api/FormRequest
 touch app/Transformers/ReplyTransformer.php
 
 php artisan make:controller Api/RepliesController
+
+touch app/Transformers/NotificationTransformer.php
+
+php artisan make:controller Api/NotificationsController
