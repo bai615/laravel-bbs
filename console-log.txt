@@ -335,3 +335,7 @@ touch app/Transformers/PermissionTransformer.php
 php artisan make:controller Api/PermissionsController
 
 touch app/Transformers/RoleTransformer.php
+
+touch app/Transformers/LinkTransformer.php
+
+php artisan make:controller Api/LinksController
