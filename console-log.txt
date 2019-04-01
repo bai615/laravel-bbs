@@ -356,3 +356,8 @@ php artisan make:provider JpushServiceProvider
 touch config/jpush.php
 
 php artisan make:listener PushNotification
+
+
+php artisan make:test TopicApiTest
+
+touch tests/Traits/ActingJWTUser.php
