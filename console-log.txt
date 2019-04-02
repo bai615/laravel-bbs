@@ -361,3 +361,14 @@ php artisan make:listener PushNotification
 php artisan make:test TopicApiTest
 
 touch tests/Traits/ActingJWTUser.php
+
+
+git checkout -b passport
+
+composer require laravel/passport
+
+php artisan migrate
+
+php artisan passport:keys
+
+php artisan passport:client --password --name='larabbs-ios'
