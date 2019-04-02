@@ -372,3 +372,5 @@ php artisan migrate
 php artisan passport:keys
 
 php artisan passport:client --password --name='larabbs-ios'
+
+php artisan make:provider PassportDingoProvider

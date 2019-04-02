@@ -7,6 +7,10 @@ use App\Http\Requests\Api\SocialAuthorizationRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
+use League\OAuth2\Server\AuthorizationServer;
+use League\OAuth2\Server\Exception\OAuthServerException;
+use Psr\Http\Message\ServerRequestInterface;
+use Zend\Diactoros\Response as Psr7Response;
 
 class AuthorizationsController extends Controller
 {
@@ -63,7 +67,16 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
-    public function store(AuthorizationRequest $request)
+    public function store(AuthorizationRequest $originRequest, AuthorizationServer $server, ServerRequestInterface $serverRequest)
+    {
+        try{
+            return $server->respondToAccessTokenRequest($serverRequest, new Psr7Response)->withStatus(201);
+        }catch (OAuthServerException $e){
+            return $this->response->errorUnauthorized($e->getMessage());
+        }
+    }
+
+    public function store_bak(AuthorizationRequest $request)
     {
         $username = $request->username;
 
@@ -89,13 +102,32 @@ class AuthorizationsController extends Controller
         ]);
     }
 
-    public function update()
+    public function update(AuthorizationServer $server, ServerRequestInterface $serverRequest)
+    {
+        try{
+            return $server->respondToAccessTokenRequest($serverRequest, new Psr7Response);
+        }catch (OAuthServerException $e){
+            return $this->response->errorUnauthorized($e->getMessage());
+        }
+    }
+
+    public function update_bak()
     {
         $token = Auth::guard('api')->refresh();
         return $this->respondWithToken($token);
     }
 
     public function destroy()
+    {
+        if (!empty($this->user())){
+            $this->user()->token()->revoke();
+            return $this->response->noContent();
+        }else{
+            return $this->response->errorUnauthorized('The token is invalid.');
+        }
+    }
+
+    public function destroy_bak()
     {
         Auth::guard('api')->logout();
         return $this->response->noContent();
