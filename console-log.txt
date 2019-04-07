@@ -378,3 +378,9 @@ php artisan make:provider PassportDingoProvider
 php artisan passport:client --personal
 
 touch app/Traits/PassportToken.php
+
+
+// 对接微信小程序
+composer require "overtrue/laravel-wechat:~4.0"
+
+php artisan vendor:publish --provider="Overtrue\LaravelWeChat\ServiceProvider"
