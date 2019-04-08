@@ -384,3 +384,9 @@ touch app/Traits/PassportToken.php
 composer require "overtrue/laravel-wechat:~4.0"
 
 php artisan vendor:publish --provider="Overtrue\LaravelWeChat\ServiceProvider"
+
+php artisan make:migration add_weixin_session_key_to_users_table --table=users
+
+php artisan migrate
+
+php artisan make:request Api/WeappAuthorizationRequest
