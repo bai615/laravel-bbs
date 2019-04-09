@@ -71,8 +71,9 @@ class UsersController extends Controller
     {
         // 缓存中是否存在对应的 key
         $verifyData = \Cache::get($request->verification_key);
+        \Log::info('weapp store code: '.json_encode($verifyData));
 
-        if ($verifyData){
+        if (!$verifyData){
             return $this->response->error('验证码已失效', 422);
         }
 
